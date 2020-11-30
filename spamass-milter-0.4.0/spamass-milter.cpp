@@ -486,7 +486,7 @@ assassinate(SMFICTX* ctx, SpamAssassin* assassin)
 	if (do_reject)
 	{
 		debug(D_MISC, "Rejecting");
-		smfi_setreply(ctx, const_cast<char*>("550"), rejectcode, rejecttext);
+		smfi_setreply(ctx, const_cast<char*>("450"), "4.7.1", rejecttext);
 
 
 		if (flag_bucket)
@@ -516,7 +516,7 @@ assassinate(SMFICTX* ctx, SpamAssassin* assassin)
 				waitpid(pid, NULL, 0);
 			}
 		}
-		return SMFIS_REJECT;
+		return SMFIS_TEMPFAIL;
 	}
   }
 
